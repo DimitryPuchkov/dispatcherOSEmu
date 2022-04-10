@@ -84,6 +84,7 @@ namespace dispatcherOSEmu
          this.button1.TabIndex = 5;
          this.button1.Text = "Добавить задачу в список";
          this.button1.UseVisualStyleBackColor = true;
+         this.button1.Click += new System.EventHandler(this.button1_Click);
          // 
          // label2
          // 
@@ -105,6 +106,7 @@ namespace dispatcherOSEmu
          this.button2.TabIndex = 8;
          this.button2.Text = "Сгенерировать список";
          this.button2.UseVisualStyleBackColor = true;
+         this.button2.Click += new System.EventHandler(this.button2_Click);
          // 
          // label4
          // 

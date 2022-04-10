@@ -38,18 +38,18 @@ namespace dispatcherOSEmu
          this.label5 = new System.Windows.Forms.Label();
          this.label6 = new System.Windows.Forms.Label();
          this.groupBox1 = new System.Windows.Forms.GroupBox();
+         this.progressBar6 = new System.Windows.Forms.ProgressBar();
+         this.progressBar5 = new System.Windows.Forms.ProgressBar();
+         this.progressBar4 = new System.Windows.Forms.ProgressBar();
+         this.progressBar3 = new System.Windows.Forms.ProgressBar();
+         this.progressBar2 = new System.Windows.Forms.ProgressBar();
+         this.progressBar1 = new System.Windows.Forms.ProgressBar();
          this.button1 = new System.Windows.Forms.Button();
          this.button2 = new System.Windows.Forms.Button();
          this.button3 = new System.Windows.Forms.Button();
          this.textBox3 = new System.Windows.Forms.TextBox();
          this.label7 = new System.Windows.Forms.Label();
          this.checkBox1 = new System.Windows.Forms.CheckBox();
-         this.progressBar1 = new System.Windows.Forms.ProgressBar();
-         this.progressBar2 = new System.Windows.Forms.ProgressBar();
-         this.progressBar3 = new System.Windows.Forms.ProgressBar();
-         this.progressBar4 = new System.Windows.Forms.ProgressBar();
-         this.progressBar5 = new System.Windows.Forms.ProgressBar();
-         this.progressBar6 = new System.Windows.Forms.ProgressBar();
          this.groupBox1.SuspendLayout();
          this.SuspendLayout();
          // 
@@ -152,6 +152,48 @@ namespace dispatcherOSEmu
          this.groupBox1.TabStop = false;
          this.groupBox1.Text = "Процессор";
          // 
+         // progressBar6
+         // 
+         this.progressBar6.Location = new System.Drawing.Point(6, 229);
+         this.progressBar6.Name = "progressBar6";
+         this.progressBar6.Size = new System.Drawing.Size(242, 35);
+         this.progressBar6.TabIndex = 5;
+         // 
+         // progressBar5
+         // 
+         this.progressBar5.Location = new System.Drawing.Point(6, 188);
+         this.progressBar5.Name = "progressBar5";
+         this.progressBar5.Size = new System.Drawing.Size(242, 35);
+         this.progressBar5.TabIndex = 4;
+         // 
+         // progressBar4
+         // 
+         this.progressBar4.Location = new System.Drawing.Point(6, 147);
+         this.progressBar4.Name = "progressBar4";
+         this.progressBar4.Size = new System.Drawing.Size(242, 35);
+         this.progressBar4.TabIndex = 3;
+         // 
+         // progressBar3
+         // 
+         this.progressBar3.Location = new System.Drawing.Point(6, 106);
+         this.progressBar3.Name = "progressBar3";
+         this.progressBar3.Size = new System.Drawing.Size(242, 35);
+         this.progressBar3.TabIndex = 2;
+         // 
+         // progressBar2
+         // 
+         this.progressBar2.Location = new System.Drawing.Point(6, 65);
+         this.progressBar2.Name = "progressBar2";
+         this.progressBar2.Size = new System.Drawing.Size(242, 35);
+         this.progressBar2.TabIndex = 1;
+         // 
+         // progressBar1
+         // 
+         this.progressBar1.Location = new System.Drawing.Point(6, 24);
+         this.progressBar1.Name = "progressBar1";
+         this.progressBar1.Size = new System.Drawing.Size(242, 35);
+         this.progressBar1.TabIndex = 0;
+         // 
          // button1
          // 
          this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -161,6 +203,7 @@ namespace dispatcherOSEmu
          this.button1.TabIndex = 17;
          this.button1.Text = "Сгенерировать задачи";
          this.button1.UseVisualStyleBackColor = true;
+         this.button1.Click += new System.EventHandler(this.button1_Click);
          // 
          // button2
          // 
@@ -210,48 +253,6 @@ namespace dispatcherOSEmu
          this.checkBox1.TabIndex = 22;
          this.checkBox1.Text = "Выполнять в ручном режиме";
          this.checkBox1.UseVisualStyleBackColor = true;
-         // 
-         // progressBar1
-         // 
-         this.progressBar1.Location = new System.Drawing.Point(6, 24);
-         this.progressBar1.Name = "progressBar1";
-         this.progressBar1.Size = new System.Drawing.Size(242, 35);
-         this.progressBar1.TabIndex = 0;
-         // 
-         // progressBar2
-         // 
-         this.progressBar2.Location = new System.Drawing.Point(6, 65);
-         this.progressBar2.Name = "progressBar2";
-         this.progressBar2.Size = new System.Drawing.Size(242, 35);
-         this.progressBar2.TabIndex = 1;
-         // 
-         // progressBar3
-         // 
-         this.progressBar3.Location = new System.Drawing.Point(6, 106);
-         this.progressBar3.Name = "progressBar3";
-         this.progressBar3.Size = new System.Drawing.Size(242, 35);
-         this.progressBar3.TabIndex = 2;
-         // 
-         // progressBar4
-         // 
-         this.progressBar4.Location = new System.Drawing.Point(6, 147);
-         this.progressBar4.Name = "progressBar4";
-         this.progressBar4.Size = new System.Drawing.Size(242, 35);
-         this.progressBar4.TabIndex = 3;
-         // 
-         // progressBar5
-         // 
-         this.progressBar5.Location = new System.Drawing.Point(6, 188);
-         this.progressBar5.Name = "progressBar5";
-         this.progressBar5.Size = new System.Drawing.Size(242, 35);
-         this.progressBar5.TabIndex = 4;
-         // 
-         // progressBar6
-         // 
-         this.progressBar6.Location = new System.Drawing.Point(6, 229);
-         this.progressBar6.Name = "progressBar6";
-         this.progressBar6.Size = new System.Drawing.Size(242, 35);
-         this.progressBar6.TabIndex = 5;
          // 
          // Form1
          // 
