@@ -31,11 +31,16 @@ namespace dispatcherOSEmu
     */
    public partial class Form2 : Form
    {
+      private const int MAX_TASK_NAME_LENGTH = 10;
+      private const int MAX_TASK_TIME_LIMIT = 60;
+
       private Dictionary<string, int> tasks = new Dictionary<string, int>();
       public Dictionary<string, int> getTasks() => tasks;
       public Form2()
       {
          InitializeComponent();
+         printFirstLine();
+         textBox1.AppendText(Environment.NewLine);
       }
 
       private void label3_Click(object sender, EventArgs e)
@@ -48,10 +53,91 @@ namespace dispatcherOSEmu
          
       }
 
+      /**
+       * Validate input data 
+       */
+      private bool validateInput()
+      {
+         int i = 0;
+
+
+         /**
+         * Validate empty input data
+         */
+         if (String.IsNullOrEmpty(textBox2.Text) || String.IsNullOrEmpty(textBox3.Text))
+         {
+            MessageBox.Show("enter all fields, data is not valid", "Error", MessageBoxButtons.OK);
+            return false;
+         }
+
+         /**
+         * Validate incorrect textBox3 integer type
+         */
+         if (!int.TryParse(textBox3.Text, out i))
+         {
+            MessageBox.Show("Incorrect integer value!", "Error", MessageBoxButtons.OK);
+            return false;
+         }
+
+
+         /**
+          *  Validate, if task with the same name already exist
+          */
+         if (getTasks().ContainsKey(textBox2.Text))
+         {
+            MessageBox.Show("Task with the same name already exists", "Error", MessageBoxButtons.OK);
+            return false;
+         }
+
+         /**
+          *  Validate, if textBox1 text length is allowed
+          */
+         if (textBox2.TextLength > MAX_TASK_NAME_LENGTH)
+         {
+            MessageBox.Show("Task name length is too long", "Error", MessageBoxButtons.OK);
+            return false;
+         }
+
+         /**
+          *  Validate, if textBox3 time is greater than maximum allowed 
+          */
+         if (int.Parse(textBox3.Text) > MAX_TASK_TIME_LIMIT)
+         {
+            MessageBox.Show("Task time is too long", "Error", MessageBoxButtons.OK);
+            return false;
+         }
+
+         return true;
+
+      }
+
+
+      private void printFirstLine()
+      {
+         textBox1.AppendText(String.Format("{0,0} {1, 15}", "Name", "Time Left"));
+         textBox1.AppendText(Environment.NewLine);
+         textBox1.AppendText("----------------------");
+      }
+
+      private void addTaskText()
+      { 
+         textBox1.AppendText(String.Format("{0,-20}{1,-20}", textBox2.Text, textBox3.Text));
+      }
+
+
       private void button1_Click(object sender, EventArgs e)
       {
+        
+         if(!validateInput())
+         {
+            return;
+         }
+
+
          tasks.Add(textBox2.Text, int.Parse(textBox3.Text));
-         textBox1.Text += textBox2.Text + " " + textBox3.Text;
+         addTaskText();
+         textBox1.AppendText(Environment.NewLine);
+
       }
    }
 }
