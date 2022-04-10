@@ -33,6 +33,7 @@ namespace dispatcherOSEmu
    {
       private const int MAX_TASK_NAME_LENGTH = 10;
       private const int MAX_TASK_TIME_LIMIT = 60;
+      private const int MIN_TASK_TIME_LIMIT = 1;
 
       private Dictionary<string, int> tasks = new Dictionary<string, int>();
       public Dictionary<string, int> getTasks() => tasks;
@@ -104,6 +105,16 @@ namespace dispatcherOSEmu
          if (int.Parse(textBox3.Text) > MAX_TASK_TIME_LIMIT)
          {
             MessageBox.Show("Task time is too long", "Error", MessageBoxButtons.OK);
+            return false;
+         }
+
+
+         /**
+         *  Validate, if textBox3 time is lower than minimum allowed 
+         */
+         if (int.Parse(textBox3.Text) < MIN_TASK_TIME_LIMIT)
+         {
+            MessageBox.Show("Task time is too small", "Error", MessageBoxButtons.OK);
             return false;
          }
 
