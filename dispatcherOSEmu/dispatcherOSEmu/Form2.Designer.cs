@@ -140,10 +140,12 @@ namespace dispatcherOSEmu
          this.button3.TabIndex = 11;
          this.button3.Text = "Случайный список";
          this.button3.UseVisualStyleBackColor = true;
-         // 
-         // Form2
-         // 
-         this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+         this.button3.Click += new System.EventHandler(this.button3_Click);
+
+            // 
+            // Form2
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.BackColor = System.Drawing.SystemColors.AppWorkspace;
          this.ClientSize = new System.Drawing.Size(745, 450);

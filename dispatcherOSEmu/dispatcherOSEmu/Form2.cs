@@ -10,30 +10,13 @@ using System.Windows.Forms;
 
 namespace dispatcherOSEmu
 {
-   //TODO Egor: all you work should be in another branch
-   // improve button1_Click:
-   /*
-    * add examination on correct input
-    * if input is not correct show message: enter all fields, data is not valid, this task name exist ( for other cases)
-    * 
-    */
-   //
-   //implement format output tasks dictionary into textBox1:
-   /*
-    * example output:
-    * Name      Time left
-    * -------------------
-    * Task1        10
-    * Task2       100
-    * Taskkdafa    5
-    * 
-    * 
-    */
    public partial class Form2 : Form
    {
       private const int MAX_TASK_NAME_LENGTH = 10;
       private const int MAX_TASK_TIME_LIMIT = 60;
       private const int MIN_TASK_TIME_LIMIT = 1;
+      private const int MIN_RANDOM_TASKS_COUNT = 2;
+      private const int MAX_TASKS_COUNT = 10;
 
       private Dictionary<string, int> tasks = new Dictionary<string, int>();
       public Dictionary<string, int> getTasks() => tasks;
@@ -47,18 +30,56 @@ namespace dispatcherOSEmu
       private void label3_Click(object sender, EventArgs e)
       {
 
+
       }
 
-      private void button2_Click(object sender, EventArgs e)
-      {
-         
-      }
+        private void button2_Click(object sender, EventArgs e)
+        {
+        }
 
-      /**
-       * Validate input data 
-       */
-      private bool validateInput()
-      {
+        
+        /**
+         * Display generated random tasks
+         */
+        private void button3_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            printFirstLine();
+            textBox1.AppendText(Environment.NewLine);
+
+            generateRandomTasks();
+
+            addTasksText();
+        }
+
+        /**
+         * Generate random tasks. All previous tasks will be deleted
+         */
+        public void generateRandomTasks()
+        {
+            tasks.Clear();
+
+            Random rnd = new Random();
+
+            int tasksCount = rnd.Next(MIN_RANDOM_TASKS_COUNT, MAX_TASKS_COUNT);
+            string taskName = "";
+            int taskTime = 0;
+
+            for (int i = 0; i < tasksCount; i++)
+            {
+                taskName = String.Format("Task {0}", i);
+                taskTime = rnd.Next(MIN_TASK_TIME_LIMIT, MAX_TASK_TIME_LIMIT);
+
+                tasks.Add(taskName, taskTime);
+            }
+
+        }
+
+        /**
+         * Validate input data 
+         */
+        private bool validateInput()
+        {
          int i = 0;
 
 
@@ -118,6 +139,12 @@ namespace dispatcherOSEmu
             return false;
          }
 
+            if (tasks.Count > MAX_TASKS_COUNT)
+            {
+                MessageBox.Show("There are too much tasks", "Error", MessageBoxButtons.OK);
+                return false;
+            }
+
          return true;
 
       }
@@ -133,7 +160,18 @@ namespace dispatcherOSEmu
       private void addTaskText()
       { 
          textBox1.AppendText(String.Format("{0,-20}{1,-20}", textBox2.Text, textBox3.Text));
+
       }
+
+        private void addTasksText()
+        {
+            foreach (var task in tasks)
+            {
+                textBox1.AppendText(String.Format("{0,-20}{1,-20}", task.Key, task.Value));
+                textBox1.AppendText(Environment.NewLine);
+
+            }
+        }
 
 
       private void button1_Click(object sender, EventArgs e)
@@ -143,7 +181,6 @@ namespace dispatcherOSEmu
          {
             return;
          }
-
 
          tasks.Add(textBox2.Text, int.Parse(textBox3.Text));
          addTaskText();
