@@ -41,13 +41,17 @@ namespace dispatcherOSEmu
                 int kwant =  (int) (T / currentTasks.Count);
                 textBox3.Text = kwant.ToString();
                 progressBar1.Value = 0;
+                var key = currentTasks.Dequeue();
+                if (tasks[key] <= kwant) kwant = tasks[key];
+
                 for (int i = 0; i < 10; i++)
                 {
                     await Task.Delay(kwant*100);
                     progressBar1.PerformStep();
                 }
 
-                var key = currentTasks.Dequeue();
+
+
                 tasks[key] -= kwant;
 
                 if (tasks[key] > 0) currentTasks.Enqueue(key);
