@@ -16,7 +16,7 @@ namespace dispatcherOSEmu
       private const int MAX_TASK_TIME_LIMIT = 60;
       private const int MIN_TASK_TIME_LIMIT = 1;
       private const int MIN_RANDOM_TASKS_COUNT = 2;
-      private const int MAX_TASKS_COUNT = 10;
+      private const int MAX_TASKS_COUNT = 1000;
 
       private Dictionary<string, int> tasks = new Dictionary<string, int>();
       public Dictionary<string, int> getTasks() => tasks;
@@ -35,6 +35,8 @@ namespace dispatcherOSEmu
 
         private void button2_Click(object sender, EventArgs e)
         {
+            textBox1.Text = "";
+            this.Close();
         }
 
         
@@ -187,5 +189,10 @@ namespace dispatcherOSEmu
          textBox1.AppendText(Environment.NewLine);
 
       }
-   }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
