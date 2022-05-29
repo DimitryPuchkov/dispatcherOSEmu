@@ -17,10 +17,11 @@ namespace dispatcherOSEmu
       Form2 f2 = new Form2();
       //Timer t1 = new Timer();
       private Dictionary<string, int> tasks = new Dictionary<string, int>();
-      Queue<string> currentTasks;
+      Queue<string> currentTasks = new Queue<string>();
       bool go = false;
-      int progressBarMaxValue = 100;
-      int additionalDelay = 2000;
+        int maxQuantTime = 100;
+        int minQuantTime = 1;
+
       float T;
 
       public Form1()
@@ -36,7 +37,23 @@ namespace dispatcherOSEmu
        */
       private async void button2Click(object sender, EventArgs e)
       {
-         T = currentTasks.Count * Int32.Parse(textBox3.Text);
+           int quantTime = Int32.Parse(textBox3.Text);
+
+            if(quantTime < minQuantTime)
+            {
+                MessageBox.Show("Quant time is less than minumum allowed");
+                return;
+            }
+
+            if (quantTime > minQuantTime)
+            {
+                MessageBox.Show("Quant time is more than maximum allowed");
+                return;
+            }
+
+
+            T = currentTasks.Count * quantTime;
+
          go = true;
          if (!checkBox1.Checked)
          {
